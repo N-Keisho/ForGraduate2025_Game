@@ -18,16 +18,28 @@ public class Quest : ScriptableObject
     public string question;
     public Sprite image;
     public List<string> answer;
+    public int correctIndex;
 
+    // 問題のフォーマットが正しいかチェック
     public bool CheckFormat()
     {
-        if (type == QuestType.Open)
+        if (answer == null)
+        {
+            Debug.LogError("answerがnullです");
+            return false;
+        }
+        else if(question == null || question == "")
+        {
+            Debug.LogError("questionがnullです");
+            return false;
+        }
+        else if (type == QuestType.Open)
         {
             return answer.Count > 0;
         }
         else if (type == QuestType.Select)
         {
-            return answer.Count > 1;
+            return answer.Count > 1 && correctIndex >= 0 && correctIndex < answer.Count;
         }
         else if (type == QuestType.Silhouette)
         {

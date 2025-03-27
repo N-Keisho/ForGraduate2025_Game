@@ -8,30 +8,35 @@ using System.Linq;
 // アイテムの名前をキーワードとして登録し、認識されたキーワードに対応するアイテムのフラグをtrueにする
 public class SpeechAnswer : MonoBehaviour
 {
-    private QuestList ql;
     private GameManager gm;
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
     void Start()
     {
-        ql = GetComponent<QuestList>();
         gm = GetComponent<GameManager>();
-        foreach (Quest quest in ql.quests)
+        foreach (Quest quest in gm.quests)
         {
-            foreach (string answer in quest.answer)
+            if (quest.CheckFormat()) // 問題のフォーマットが正しいかチェック
             {
-                keywords.Add(answer, () =>
+                foreach (string answer in quest.answer)
                 {
-                    Debug.Log("Keyword: " + answer);
-                    try
+                    keywords.Add(answer, () =>
                     {
-                        gm.answerIndex = ql.quests.IndexOf(quest);
-                    }
-                    catch (System.Exception e)
-                    {
-                        Debug.Log(e);
-                    }
-                });
+                        Debug.Log("Keyword: " + answer);
+                        try
+                        {
+                            gm.answer = gm.quests.IndexOf(quest);
+                            gm.answerIndex = quest.answer.IndexOf(answer);
+                        }
+                        catch (System.Exception e)
+                        {
+                            Debug.Log(e);
+                        }
+                    });
+                }
+            }
+            else{
+                Debug.LogError("問題のフォーマットが正しくありません: " + quest.name);
             }
         }
 
@@ -46,6 +51,10 @@ public class SpeechAnswer : MonoBehaviour
         if (keywords.TryGetValue(args.text, out keywordAction))
         {
             keywordAction.Invoke();
+        }
+        else {
+            gm.answer = -1;
+            gm.answerIndex = -1;
         }
     }
 }
