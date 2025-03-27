@@ -8,12 +8,14 @@ using System.Linq;
 // アイテムの名前をキーワードとして登録し、認識されたキーワードに対応するアイテムのフラグをtrueにする
 public class SpeechAnswer : MonoBehaviour
 {
-    [SerializeField] private QuestList ql;
-    [SerializeField] private GameManager gm;
+    private QuestList ql;
+    private GameManager gm;
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
     void Start()
     {
+        ql = GetComponent<QuestList>();
+        gm = GetComponent<GameManager>();
         foreach (Quest quest in ql.quests)
         {
             foreach (string answer in quest.answer)
