@@ -12,10 +12,12 @@ public class Guage : MonoBehaviour
     [SerializeField] private Image inGuage;             // 内側のゲージ
     [SerializeField] private Image outGuage;            // 外側のゲージ
     private GameManager gm;                             // ゲームマネージャ
+    private Sound sound;                                // 音声再生
     private float maxTime;                              // 最大時間（問題数×制限時間）
     void Start()
     {
         gm = GetComponent<GameManager>();
+        sound = GetComponent<Sound>();
 
         maxTime = gm.quests.Count * timeLimit;
         timer = 0.0f;
@@ -42,10 +44,11 @@ public class Guage : MonoBehaviour
             outGuage.fillAmount = leftTime / maxTime;
 
             // 制限時間1秒前
-            if((leftTime - 1) % timeLimit == 0)
+            if((leftTime - 1) % timeLimit == 0 && !gm.isCorrect)
             {
                 // 答えの表示
                 gm.ShowAnswer();
+                sound.PlayWrongAnswer();
             }
 
             // 制限時間経過時

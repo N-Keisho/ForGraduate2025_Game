@@ -8,16 +8,18 @@ public class GameManager : MonoBehaviour
     public int answer = -1;              // 回答
     public int answerIndex = -1;         // 回答の種類
     public int currentQuestIndex = 0;   // 現在の問題のインデックス
+    public bool isCorrect = false;     // 回答が正解かどうか
     private int preAnswer = -1;         // 前回の回答
     private int preAnswerIndex = -1;    // 前回の回答の種類
     private int correctAnswerNum = 0;   // 正解数
-    private bool isCorrect = false;     // 回答が正解かどうか
+    private Sound sound;                // 音声再生
     [SerializeField] private TMP_Text scentence; // 問題文を表示するテキスト
     [SerializeField] private TMP_Text answerText; // 回答を表示するテキスト
     [SerializeField] private TMP_Text correctAnswerNumText; // 正解数を表示するテキスト
 
     void Start()
     {
+        sound = GetComponent<Sound>();
         scentence.text = quests[currentQuestIndex].question;
         answerText.text = "";
     }
@@ -55,6 +57,10 @@ public class GameManager : MonoBehaviour
         {
             CorrectAnswer();
         }
+        else if (Input.anyKeyDown && !isCorrect) 
+        {
+            sound.PlayWrongAnswer();
+        }
     }
 
     void CorrectAnswer()
@@ -65,6 +71,7 @@ public class GameManager : MonoBehaviour
             correctAnswerNum++;
             correctAnswerNumText.text = correctAnswerNum.ToString();
             ShowAnswer();
+            sound.PlayCorrectAnswer();
         }
     }
 
