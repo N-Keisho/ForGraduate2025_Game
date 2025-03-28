@@ -53,11 +53,11 @@ public class GameManager : MonoBehaviour
             preAnswerIndex = answerIndex;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && Input.GetKeyDown(KeyCode.Return))
         {
             CorrectAnswer();
         }
-        else if (Input.anyKeyDown && !isCorrect) 
+        else if (Input.anyKeyDown && !isCorrect && !Input.GetKey(KeyCode.Space))
         {
             sound.PlayWrongAnswer();
         }
