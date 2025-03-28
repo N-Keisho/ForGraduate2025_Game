@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        scentence.text = "Q : " + quests[currentQuestIndex].question;
+        scentence.text = quests[currentQuestIndex].question;
     }
 
     void Update()
@@ -50,12 +50,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void NextQuest()
+    public void NextQuest()
     {
         if (currentQuestIndex < quests.Count - 1)
         {
             currentQuestIndex++;
-            scentence.text = "Q : " + quests[currentQuestIndex].question;
+            scentence.text = quests[currentQuestIndex].question;
+        }
+        else
+        {
+            Debug.Log("Finish");
         }
     }
 }
