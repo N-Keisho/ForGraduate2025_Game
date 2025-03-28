@@ -952,6 +952,8 @@ MonoBehaviour:
   answerIndex: -1
   currentQuestIndex: 0
   scentence: {fileID: 1777537745}
+  answerText: {fileID: 575716773}
+  correctAnswerNumText: {fileID: 1716390290}
 --- !u!114 &860736299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1009,7 +1011,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860736295}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5db9347f7ce91b419cbe8939492ec83, type: 3}
   m_Name: 
@@ -1029,7 +1031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftTime: 0
-  timeLimit: 5
+  timeLimit: 7
   timer: 0
   period: 1
   inGuage: {fileID: 484206521}

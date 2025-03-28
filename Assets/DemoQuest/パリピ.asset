@@ -18,4 +18,5 @@ MonoBehaviour:
   answer:
   - "\u30D1\u30FC\u30C6\u30A3\u30FC\u30D4\u30FC\u30DD\u30FC"
   - "\u30D1\u30EA\u30D4"
+  answerText: "\u30D1\u30EA\u30D4"
   correctIndex: 0

@@ -18,4 +18,5 @@ MonoBehaviour:
   answer:
   - "\u30D7\u30ED\u30C6\u30A4\u30F3"
   - "\u3044\u3063\u307D\u3093\u307E\u3093\u305E\u304F"
+  answerText: "\u4E00\u672C\u6E80\u8DB3"
   correctIndex: 0

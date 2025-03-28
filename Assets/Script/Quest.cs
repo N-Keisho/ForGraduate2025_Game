@@ -18,6 +18,7 @@ public class Quest : ScriptableObject
     public string question;
     public Sprite image;
     public List<string> answer;
+    public string answerText;
     public int correctIndex;
 
     // 問題のフォーマットが正しいかチェック
@@ -31,6 +32,10 @@ public class Quest : ScriptableObject
         else if(question == null || question == "")
         {
             Debug.LogError("questionがnullです");
+            return false;
+        }
+        else if(answerText == null || answerText == ""){
+            Debug.LogError("answerTextがnullです");
             return false;
         }
         else if (type == QuestType.Open)

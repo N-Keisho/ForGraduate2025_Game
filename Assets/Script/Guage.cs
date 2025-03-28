@@ -41,6 +41,14 @@ public class Guage : MonoBehaviour
 
             outGuage.fillAmount = leftTime / maxTime;
 
+            // 制限時間1秒前
+            if((leftTime - 1) % timeLimit == 0)
+            {
+                // 答えの表示
+                gm.ShowAnswer();
+            }
+
+            // 制限時間経過時
             if (leftTime % timeLimit == 0)
             {
                 if (gm.currentQuestIndex < gm.quests.Count - 1)

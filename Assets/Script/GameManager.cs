@@ -10,50 +10,82 @@ public class GameManager : MonoBehaviour
     public int currentQuestIndex = 0;   // 現在の問題のインデックス
     private int preAnswer = -1;         // 前回の回答
     private int preAnswerIndex = -1;    // 前回の回答の種類
+    private int correctAnswerNum = 0;   // 正解数
+    private bool isCorrect = false;     // 回答が正解かどうか
     [SerializeField] private TMP_Text scentence; // 問題文を表示するテキスト
-    
+    [SerializeField] private TMP_Text answerText; // 回答を表示するテキスト
+    [SerializeField] private TMP_Text correctAnswerNumText; // 正解数を表示するテキスト
+
     void Start()
     {
         scentence.text = quests[currentQuestIndex].question;
+        answerText.text = "";
     }
 
     void Update()
     {
-        if(preAnswer != answer || preAnswerIndex != answerIndex)
+        if (preAnswer != answer || preAnswerIndex != answerIndex)
         {
             if (quests[currentQuestIndex].type == QuestType.Open)
             {
                 if (answer == currentQuestIndex)
                 {
-                    Debug.Log("Correct");
-                    NextQuest();
+                    CorrectAnswer();
                 }
             }
             else if (quests[currentQuestIndex].type == QuestType.Select)
             {
                 if (answer == currentQuestIndex && answerIndex == quests[currentQuestIndex].correctIndex)
                 {
-                    Debug.Log("Correct");
-                    NextQuest();
+                    CorrectAnswer();
                 }
             }
             else if (quests[currentQuestIndex].type == QuestType.Silhouette)
             {
                 if (answer == currentQuestIndex)
                 {
-                    Debug.Log("Correct");
-                    NextQuest();
+                    CorrectAnswer();
                 }
             }
             preAnswer = answer;
             preAnswerIndex = answerIndex;
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CorrectAnswer();
+        }
+    }
+
+    void CorrectAnswer()
+    {
+        if (!isCorrect)
+        {
+            isCorrect = true;
+            correctAnswerNum++;
+            correctAnswerNumText.text = correctAnswerNum.ToString();
+            ShowAnswer();
+        }
+    }
+
+    public void ResetAnser()
+    {
+        answer = -1;
+        answerIndex = -1;
+        answerText.text = "";
+        isCorrect = false;
+    }
+
+    public void ShowAnswer()
+    {
+        answerText.text = quests[currentQuestIndex].answerText;
     }
 
     public void NextQuest()
     {
         if (currentQuestIndex < quests.Count - 1)
         {
+            ResetAnser();
             currentQuestIndex++;
             scentence.text = quests[currentQuestIndex].question;
         }
