@@ -10,7 +10,9 @@ public class Guage : MonoBehaviour
     [SerializeField] private float timer;               // タイマー
     [SerializeField] private float period = 1.0f;       // タイマーの周期
     [SerializeField] private Image inGuage;             // 内側のゲージ
+    [SerializeField] private Image nextInGuage;         // 次の問題の内側のゲージ
     [SerializeField] private Image outGuage;            // 外側のゲージ
+    [SerializeField] private Image nextOutGuage;        // 次の問題の外側のゲージ
     private GameManager gm;                             // ゲームマネージャ
     private Sound sound;                                // 音声再生
     private float maxTime;                              // 最大時間（問題数×制限時間）
@@ -24,6 +26,7 @@ public class Guage : MonoBehaviour
         leftTime = maxTime;
         inGuage.fillAmount = 0f;
         outGuage.fillAmount = 1.0f;
+        nextOutGuage.fillAmount = 1f - timeLimit / maxTime;
     }
 
     // Update is called once per frame
@@ -42,6 +45,7 @@ public class Guage : MonoBehaviour
 
 
             outGuage.fillAmount = leftTime / maxTime;
+            outGuage.color += new Color(0.15f, 0.0f, 0.0f, 1.0f);
 
             // 制限時間1秒前
             if((leftTime - 1) % timeLimit == 0 && !gm.isCorrect)
@@ -49,6 +53,7 @@ public class Guage : MonoBehaviour
                 // 答えの表示
                 gm.ShowAnswer();
                 sound.PlayWrongAnswer();
+                
             }
 
             // 制限時間経過時
@@ -57,7 +62,9 @@ public class Guage : MonoBehaviour
                 if (gm.currentQuestIndex < gm.quests.Count - 1)
                 {   
                     gm.NextQuest();
+                    outGuage.color = new Color(0.1127307f, 1.0f, 0.0f, 1.0f); // 緑色
                     inGuage.fillAmount = (float)gm.currentQuestIndex / (float)gm.quests.Count;
+                    nextOutGuage.fillAmount = 1f - (float)(gm.currentQuestIndex + 1) / (float)gm.quests.Count;
                 }
                 else
                 {
