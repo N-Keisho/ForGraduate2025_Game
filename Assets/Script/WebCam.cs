@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class WebCam : MonoBehaviour
 {
-    [SerializeField] RawImage cameraDisplay;
+    [SerializeField] RawImage centerCamera;
     [SerializeField] int devicesIndex = 0;
     private int width = 640;
     private int height = 480;
@@ -17,7 +17,7 @@ public class WebCam : MonoBehaviour
         {
             WebCamDevice[] devices = WebCamTexture.devices;
             webcamTexture = new WebCamTexture(devices[devicesIndex].name, this.width, this.height, this.fps);
-            cameraDisplay.texture = webcamTexture;
+            centerCamera.texture = webcamTexture;
             webcamTexture.Play();
         }
     }
