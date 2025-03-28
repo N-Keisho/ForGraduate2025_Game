@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: "\u30B8\u30E7\u30C3\u30AD\u30FC"
   m_EditorClassIdentifier: 
   type: 0
-  question: "\u3053\u308C\u306F\u306A\u306B\uFF1F"
+  question: "\u3053\u308C\u306F\u3060\u30FC\u308C\uFF1F"
   image: {fileID: 21300000, guid: 68ab6363f264c0a40b7edeafd962747a, type: 3}
   answer:
   - "\u30B8\u30E7\u30C3\u30AD\u30FC"
   - "\u305F\u3051\u3086\u305F\u304B"
+  correctIndex: 0
