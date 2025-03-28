@@ -10,7 +10,6 @@ public class Guage : MonoBehaviour
     [SerializeField] private float timer;               // タイマー
     [SerializeField] private float period = 1.0f;       // タイマーの周期
     [SerializeField] private Image inGuage;             // 内側のゲージ
-    [SerializeField] private Image nextInGuage;         // 次の問題の内側のゲージ
     [SerializeField] private Image outGuage;            // 外側のゲージ
     [SerializeField] private Image nextOutGuage;        // 次の問題の外側のゲージ
     private GameManager gm;                             // ゲームマネージャ

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Text.RegularExpressions;
 public class GameManager : MonoBehaviour
 {
     public List<Quest> quests;          // 問題のリスト
@@ -85,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowAnswer()
     {
-        answerText.text = quests[currentQuestIndex].answerText;
+        answerText.text = Regex.Unescape(quests[currentQuestIndex].answerText);
     }
 
     public void NextQuest()

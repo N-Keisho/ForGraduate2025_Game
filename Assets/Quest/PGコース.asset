@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77aa1d937a4024d4c99a01a0180b8cff, type: 3}
+  m_Name: "PG\u30B3\u30FC\u30B9"
+  m_EditorClassIdentifier: 
+  type: 0
+  question: "PG\u30B3\u30FC\u30B9\u306E\u6B63\u5F0F\u540D\u79F0\u306F\uFF1F"
+  image: {fileID: 0}
+  answer:
+  - "\u30B2\u30FC\u30E0&\u30A2\u30D7\u30EA\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0\u30B3\u30FC\u30B9"
+  - "\u30B2\u30FC\u30E0\u30A2\u30F3\u30C9\u30A2\u30D7\u30EA\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0\u30B3\u30FC\u30B9"
+  answerText: "\u30B2\u30FC\u30E0&\u30A2\u30D7\u30EA\\n\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0\u30B3\u30FC\u30B9"
+  correctIndex: 0
