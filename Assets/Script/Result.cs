@@ -14,7 +14,8 @@ public class Result : MonoBehaviour
     [SerializeField] private AudioClip charge;
     [SerializeField] private AudioClip seikai;
     [SerializeField] private TransitionSettings transition;
-    [SerializeField] private string sceneName = "Title"; // ロードするシーン名
+    [SerializeField] private string sceneName = "Title";
+    [SerializeField] private GameObject buttonText;
     private float timer = 0.0f;                  // タイマー
     private float period = 0.1f;                // タイマーの周期
     private float value = 0.0f;                // ゲージの値
@@ -35,6 +36,8 @@ public class Result : MonoBehaviour
         maxValue = GlobalVariables.correctAnswerCount / (float)GlobalVariables.questsCount;
         addValue = maxValue / (3.0f / period);
         outGuage.fillAmount = 0.0f;
+
+        buttonText.SetActive(false);
     }
 
     void Update()
@@ -77,6 +80,7 @@ public class Result : MonoBehaviour
         outGuage.fillAmount = maxValue;
         correctNumText.text = GlobalVariables.correctAnswerCount.ToString();
         seikaiText.text = "せいかい！";
+        buttonText.SetActive(true);
         audioSource.Stop();
         audioSource.volume = 0.25f;
         audioSource.PlayOneShot(seikai);

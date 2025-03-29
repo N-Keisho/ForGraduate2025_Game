@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
         sound = GetComponent<Sound>();
         scentence.text = quests[currentQuestIndex].question;
         answerText.text = "";
-        // GlobalVariables.questsCount = quests.Count;             // 問題数をグローバル変数に保存
-        GlobalVariables.questsCount = 3;
+        GlobalVariables.questsCount = quests.Count;             // 問題数をグローバル変数に保存
+        // GlobalVariables.questsCount = 5;
         GlobalVariables.correctAnswerCount = 0;                 // 正解数をグローバル変数に保存
         correctSymbol.SetActive(false);
         wrongSymbol.SetActive(false);
@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
     {
         ResetAnser();
         GlobalVariables.correctAnswerCount = correctAnswerNum;
+        anserAble = false;
         isFin = true;
         sound.StopAudio();
         sound.PlayFin();
