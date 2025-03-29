@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.11273074, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -956,8 +956,8 @@ GameObject:
   - component: {fileID: 860736300}
   - component: {fileID: 860736299}
   - component: {fileID: 860736305}
-  - component: {fileID: 860736298}
   - component: {fileID: 860736306}
+  - component: {fileID: 860736298}
   - component: {fileID: 860736296}
   - component: {fileID: 860736302}
   - component: {fileID: 860736303}
@@ -977,7 +977,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860736295}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b68cf1935d37a642b88c9e63d84a1df, type: 3}
   m_Name: 
@@ -1018,6 +1018,7 @@ MonoBehaviour:
   answerIndex: -1
   currentQuestIndex: 0
   isCorrect: 0
+  isFin: 0
   scentence: {fileID: 1777537745}
   answerText: {fileID: 575716773}
   correctAnswerNumText: {fileID: 1716390290}
@@ -1118,6 +1119,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctAnswer: {fileID: 8300000, guid: 50c9df5d5f4ee8b4898f62193a773877, type: 3}
   wrongAnswer: {fileID: 8300000, guid: fc1aee4995607a144b5060a3baaddc93, type: 3}
+  denger: {fileID: 8300000, guid: d60cb25c6d7dc634aa0c363c9b5dd9c6, type: 3}
+  start: {fileID: 8300000, guid: fe198b1a5131ad14da2e52ad46bd91f5, type: 3}
+  fin: {fileID: 8300000, guid: a852ebf1dec46ed4696fd6323ea5c3f2, type: 3}
 --- !u!82 &860736305
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2344,12 +2348,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 82.85
   m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 85
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -2537,7 +2541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1137255, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

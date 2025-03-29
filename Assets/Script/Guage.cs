@@ -15,8 +15,11 @@ public class Guage : MonoBehaviour
     private GameManager gm;                             // ゲームマネージャ
     private Sound sound;                                // 音声再生
     private float maxTime;                              // 最大時間（問題数×制限時間）
+    private bool isDenger = false;                     // 警告音が鳴ったかどうか
+    private Color addColor;
     void Start()
     {
+        addColor = (new Color(1.0f, 1.0f, 0.0f, 1.0f) - outGuage.color) / (timeLimit / period);
         gm = GetComponent<GameManager>();
         sound = GetComponent<Sound>();
 
@@ -27,8 +30,6 @@ public class Guage : MonoBehaviour
         outGuage.fillAmount = 1.0f;
         nextOutGuage.fillAmount = 1f - timeLimit / maxTime;
     }
-
-    // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
@@ -44,7 +45,13 @@ public class Guage : MonoBehaviour
 
 
             outGuage.fillAmount = leftTime / maxTime;
-            outGuage.color += new Color(0.15f, 0.0f, 0.0f, 1.0f);
+            outGuage.color += addColor;
+
+            if(leftTime < 6.0f && !isDenger && !gm.isCorrect)
+            {
+                isDenger = true;
+                sound.PlayDenger();
+            }
 
             // 制限時間1秒前
             if((leftTime - 1) % timeLimit == 0 && !gm.isCorrect)
@@ -52,7 +59,6 @@ public class Guage : MonoBehaviour
                 // 答えの表示
                 gm.ShowAnswer();
                 sound.PlayWrongAnswer();
-                
             }
 
             // 制限時間経過時
@@ -61,7 +67,7 @@ public class Guage : MonoBehaviour
                 if (gm.currentQuestIndex < GlobalVariables.questsCount - 1)
                 {   
                     gm.NextQuest();
-                    outGuage.color = new Color(0.1127307f, 1.0f, 0.0f, 1.0f); // 緑色
+                    outGuage.color = new Color(0.0f, 1.0f, 0.0f, 1.0f); // 緑色
                     inGuage.fillAmount = (float)gm.currentQuestIndex / (float)GlobalVariables.questsCount;
                     nextOutGuage.fillAmount = 1f - (float)(gm.currentQuestIndex + 1) / (float)GlobalVariables.questsCount;
                 }

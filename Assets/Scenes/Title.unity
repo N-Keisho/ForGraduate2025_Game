@@ -134,11 +134,11 @@ GameObject:
   - component: {fileID: 268021544}
   - component: {fileID: 268021543}
   - component: {fileID: 268021542}
-  - component: {fileID: 268021545}
-  - component: {fileID: 268021546}
-  - component: {fileID: 268021547}
   - component: {fileID: 268021548}
+  - component: {fileID: 268021547}
   - component: {fileID: 268021549}
+  - component: {fileID: 268021546}
+  - component: {fileID: 268021545}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1127307, g: 1, b: 0, a: 0.5019608}
+  m_Color: {r: 0, g: 1, b: 0, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

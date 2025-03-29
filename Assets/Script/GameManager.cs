@@ -6,10 +6,11 @@ using System.Text.RegularExpressions;
 public class GameManager : MonoBehaviour
 {
     public List<Quest> quests;          // 問題のリスト
-    public int answer = -1;              // 回答
-    public int answerIndex = -1;         // 回答の種類
+    public int answer = -1;             // 回答
+    public int answerIndex = -1;        // 回答の種類
     public int currentQuestIndex = 0;   // 現在の問題のインデックス
-    public bool isCorrect = false;     // 回答が正解かどうか
+    public bool isCorrect = false;      // 回答が正解かどうか
+    public bool isFin = false;          // ゲームが終了したかどうか
     private int preAnswer = -1;         // 前回の回答
     private int preAnswerIndex = -1;    // 前回の回答の種類
     private int correctAnswerNum = 0;   // 正解数
@@ -23,7 +24,8 @@ public class GameManager : MonoBehaviour
         sound = GetComponent<Sound>();
         scentence.text = quests[currentQuestIndex].question;
         answerText.text = "";
-        GlobalVariables.questsCount = quests.Count;             // 問題数をグローバル変数に保存
+        // GlobalVariables.questsCount = quests.Count;             // 問題数をグローバル変数に保存
+        GlobalVariables.questsCount = 2;
         GlobalVariables.correctAnswerCount = 0;                 // 正解数をグローバル変数に保存
     }
 
@@ -99,10 +101,15 @@ public class GameManager : MonoBehaviour
             currentQuestIndex++;
             scentence.text = quests[currentQuestIndex].question;
         }
-        else
+        else if(!isFin)
         {
             GlobalVariables.correctAnswerCount = correctAnswerNum; // 正解数をグローバル変数に保存
-            Debug.Log("Finish");
+            isFin = true;
+            sound.StopAudio();
+            sound.PlayFin();
+            scentence.text = "タイムショック";
+            scentence.fontSize = 100;
+            scentence.color = new Color(1.0f, 1.0f, 0.0f, 1.0f);
         }
     }
 }

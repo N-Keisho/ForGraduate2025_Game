@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Sound : MonoBehaviour
 {
-    public AudioClip correctAnswer;
-    public AudioClip wrongAnswer;
+    [SerializeField] private AudioClip correctAnswer;
+    [SerializeField] private AudioClip wrongAnswer;
+    [SerializeField] private AudioClip denger;
+    [SerializeField] private AudioClip start;
+    [SerializeField] private AudioClip fin;
     private AudioSource audioSource;
+
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        // PlayStart();
     }
 
     public void PlayCorrectAnswer()
@@ -21,5 +26,25 @@ public class Sound : MonoBehaviour
     public void PlayWrongAnswer()
     {
         audioSource.PlayOneShot(wrongAnswer);
+    }
+
+    public void PlayDenger()
+    {
+        audioSource.PlayOneShot(denger);
+    }
+
+    public void PlayStart()
+    {
+        audioSource.PlayOneShot(start);
+    }
+
+    public void PlayFin()
+    {
+        audioSource.PlayOneShot(fin);
+    }
+
+    public void StopAudio()
+    {
+        audioSource.Stop();
     }
 }
