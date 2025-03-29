@@ -57,8 +57,7 @@ public class Guage : MonoBehaviour
             if((leftTime - 1) % timeLimit == 0 && !gm.isCorrect)
             {
                 // 答えの表示
-                gm.ShowAnswer();
-                sound.PlayWrongAnswer();
+                 gm.ShowAnswer();
             }
 
             // 制限時間経過時

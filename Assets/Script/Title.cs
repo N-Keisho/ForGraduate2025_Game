@@ -15,15 +15,15 @@ public class Title : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>(); // AudioSourceコンポーネントを取得
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && !isLoading) // 任意のキーが押されたら
+        if(Input.GetKeyDown(KeyCode.Space) && !isLoading) 
         {
-            isLoading = true; // ロード中フラグを立てる
-            LoadScene(); // シーンをロードする
+            isLoading = true;
+            LoadScene();
         }
 
         logo.transform.localPosition = new Vector3(0, Mathf.Sin(Time.time * 2) * 5, 0); // タイトルの位置を上下に動かす
@@ -31,7 +31,7 @@ public class Title : MonoBehaviour
     }
     public void LoadScene()
     {
-        audioSource.PlayOneShot(start); // 音声を再生
+        audioSource.PlayOneShot(start);
         TransitionManager.Instance().Transition(sceneName, transition, lodadDelay);
     }
 }

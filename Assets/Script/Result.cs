@@ -27,12 +27,14 @@ public class Result : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.PlayOneShot(charge); // ゲージの音声を再生
+        audioSource.PlayOneShot(charge);
+
         allNumText.text = GlobalVariables.questsCount.ToString() + "問中...";
+        seikaiText.text = "";
+
         maxValue = GlobalVariables.correctAnswerCount / (float)GlobalVariables.questsCount;
         addValue = maxValue / (3.0f / period);
         outGuage.fillAmount = 0.0f;
-        seikaiText.text = "";
     }
 
     void Update()
@@ -53,7 +55,7 @@ public class Result : MonoBehaviour
             }
         }
 
-        if(isFin && Input.GetKeyDown(KeyCode.Space)) // スペースキーが押されたら
+        if(isFin && Input.GetKeyDown(KeyCode.Space))
         {
             GlobalVariables.correctAnswerCount = 0;
             TransitionManager.Instance().Transition(sceneName, transition, 0f);

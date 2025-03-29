@@ -15,13 +15,16 @@ public class GameManager : MonoBehaviour
     private int preAnswer = -1;         // 前回の回答
     private int preAnswerIndex = -1;    // 前回の回答の種類
     private int correctAnswerNum = 0;   // 正解数
+    private bool anserAble = true;        // 回答可能かどうか
     private bool isFin = false;          // ゲームが終了したかどうか
-    [SerializeField] private TMP_Text scentence; // 問題文を表示するテキスト
-    [SerializeField] private TMP_Text answerText; // 回答を表示するテキスト
-    [SerializeField] private TMP_Text correctAnswerNumText; // 正解数を表示するテキスト
+    [SerializeField] private TMP_Text scentence;                // 問題文を表示するテキスト
+    [SerializeField] private TMP_Text answerText;               // 回答を表示するテキスト
+    [SerializeField] private TMP_Text correctAnswerNumText;     // 正解数を表示するテキスト
     [SerializeField] private TransitionSettings transition;
-    [SerializeField] private float lodadDelay = 1.0f; // ロード遅延時間
-    [SerializeField] private string sceneName = "Result"; // ロードするシーン名
+    [SerializeField] private float lodadDelay = 1.0f;
+    [SerializeField] private string sceneName = "Result";
+    [SerializeField] private GameObject correctSymbol;          // 正解のシンボル
+    [SerializeField] private GameObject wrongSymbol;            // 不正解のシンボル
 
     void Start()
     {
@@ -31,55 +34,66 @@ public class GameManager : MonoBehaviour
         // GlobalVariables.questsCount = quests.Count;             // 問題数をグローバル変数に保存
         GlobalVariables.questsCount = 3;
         GlobalVariables.correctAnswerCount = 0;                 // 正解数をグローバル変数に保存
+        correctSymbol.SetActive(false);
+        wrongSymbol.SetActive(false);
     }
 
     void Update()
     {
-        if (preAnswer != answer || preAnswerIndex != answerIndex)
+        if (anserAble)
         {
-            if (quests[currentQuestIndex].type == QuestType.Open)
+            if (preAnswer != answer || preAnswerIndex != answerIndex)
             {
-                if (answer == currentQuestIndex)
+                if (quests[currentQuestIndex].type == QuestType.Open)
                 {
-                    CorrectAnswer();
+                    if (answer == currentQuestIndex)
+                    {
+                        CorrectAnswer();
+                    }
                 }
-            }
-            else if (quests[currentQuestIndex].type == QuestType.Select)
-            {
-                if (answer == currentQuestIndex && answerIndex == quests[currentQuestIndex].correctIndex)
+                else if (quests[currentQuestIndex].type == QuestType.Select)
                 {
-                    CorrectAnswer();
+                    if (answer == currentQuestIndex && answerIndex == quests[currentQuestIndex].correctIndex)
+                    {
+                        CorrectAnswer();
+                    }
                 }
-            }
-            else if (quests[currentQuestIndex].type == QuestType.Silhouette)
-            {
-                if (answer == currentQuestIndex)
+                else if (quests[currentQuestIndex].type == QuestType.Silhouette)
                 {
-                    CorrectAnswer();
+                    if (answer == currentQuestIndex)
+                    {
+                        CorrectAnswer();
+                    }
                 }
+                preAnswer = answer;
+                preAnswerIndex = answerIndex;
             }
-            preAnswer = answer;
-            preAnswerIndex = answerIndex;
-        }
 
-        if (Input.GetKey(KeyCode.Space) && Input.GetKeyDown(KeyCode.Return))
-        {
-            CorrectAnswer();
-        }
-        else if (Input.anyKeyDown && !isCorrect && !Input.GetKey(KeyCode.Space))
-        {
-            sound.PlayWrongAnswer();
+            if (Input.GetKey(KeyCode.Space) && Input.GetKeyDown(KeyCode.Return))
+            {
+                CorrectAnswer();
+            }
+            else if (Input.anyKeyDown && !isCorrect && !Input.GetKey(KeyCode.Space))
+            {
+                sound.PlayWrongAnswer();
+                wrongSymbol.SetActive(true);
+                Invoke("HideWrongSymbol", 0.5f);
+            }
         }
     }
 
-    void CorrectAnswer()
+    private void CorrectAnswer()
     {
         if (!isCorrect)
         {
             isCorrect = true;
             correctAnswerNum++;
-            correctAnswerNumText.text = correctAnswerNum.ToString();
+            if(currentQuestIndex < GlobalVariables.questsCount - 5)
+            {
+                correctAnswerNumText.text = correctAnswerNum.ToString();
+            }
             ShowAnswer();
+            correctSymbol.SetActive(true);
             sound.PlayCorrectAnswer();
         }
     }
@@ -89,12 +103,20 @@ public class GameManager : MonoBehaviour
         answer = -1;
         answerIndex = -1;
         answerText.text = "";
+        correctSymbol.SetActive(false);
+        wrongSymbol.SetActive(false);
+        anserAble = true;
         isCorrect = false;
     }
 
     public void ShowAnswer()
     {
         answerText.text = Regex.Unescape(quests[currentQuestIndex].answerText);
+        Invoke("anserAbleFalse", 0.5f); // 0.5秒後に回答を無効にしてるけどいらないか...？
+    }
+
+    void anserAbleFalse(){
+        anserAble = false;
     }
 
     public void NextQuest()
@@ -104,15 +126,26 @@ public class GameManager : MonoBehaviour
             ResetAnser();
             currentQuestIndex++;
             scentence.text = quests[currentQuestIndex].question;
+            if(currentQuestIndex >= GlobalVariables.questsCount - 5)
+            {
+                correctAnswerNumText.text = "?";
+            }
         }
-        else if(!isFin)
+        else if (!isFin)
         {
             Fin();
         }
     }
 
-    void Fin(){
-        GlobalVariables.correctAnswerCount = correctAnswerNum; // 正解数をグローバル変数に保存
+    private void HideWrongSymbol()
+    {
+        wrongSymbol.SetActive(false);
+    }
+
+    private void Fin()
+    {
+        ResetAnser();
+        GlobalVariables.correctAnswerCount = correctAnswerNum;
         isFin = true;
         sound.StopAudio();
         sound.PlayFin();
