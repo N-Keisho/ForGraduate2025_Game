@@ -1231,9 +1231,9 @@ GameObject:
   - component: {fileID: 860736305}
   - component: {fileID: 860736306}
   - component: {fileID: 860736308}
+  - component: {fileID: 860736310}
   - component: {fileID: 860736302}
   - component: {fileID: 860736309}
-  - component: {fileID: 860736310}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1466,7 +1466,7 @@ MonoBehaviour:
   transition: {fileID: 11400000, guid: 3ad3e86dc386e60458fda4c93a2c3d62, type: 2}
   lodadDelay: 0
   sceneName: LoadMain
-  se: {fileID: 8300000, guid: c7a856707f04b8142a0fa35d283e6101, type: 3}
+  se: {fileID: 8300000, guid: 8e75253fc585b9e4d91d58c4c114e143, type: 3}
 --- !u!1 &936503729 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7446089424280574480, guid: 1243e3106f5ce3e4490bb87d272da15f, type: 3}

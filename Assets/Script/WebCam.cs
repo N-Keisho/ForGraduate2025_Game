@@ -39,7 +39,7 @@ public class WebCam : MonoBehaviour
 
     void OnDestroy()
     {
-        if (webcamTexture != null && SceneManager.GetActiveScene().name == "Main")
+        if (webcamTexture != null && SceneManager.GetActiveScene().name == "Result")
         {
             webcamTexture.Stop(); // カメラ映像を停止
             webcamTexture = null; // カメラ映像を破棄
