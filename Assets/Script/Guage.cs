@@ -20,7 +20,7 @@ public class Guage : MonoBehaviour
         gm = GetComponent<GameManager>();
         sound = GetComponent<Sound>();
 
-        maxTime = gm.quests.Count * timeLimit;
+        maxTime = GlobalVariables.questsCount * timeLimit;
         timer = 0.0f;
         leftTime = maxTime;
         inGuage.fillAmount = 0f;
@@ -58,12 +58,12 @@ public class Guage : MonoBehaviour
             // 制限時間経過時
             if (leftTime % timeLimit == 0)
             {
-                if (gm.currentQuestIndex < gm.quests.Count - 1)
+                if (gm.currentQuestIndex < GlobalVariables.questsCount - 1)
                 {   
                     gm.NextQuest();
                     outGuage.color = new Color(0.1127307f, 1.0f, 0.0f, 1.0f); // 緑色
-                    inGuage.fillAmount = (float)gm.currentQuestIndex / (float)gm.quests.Count;
-                    nextOutGuage.fillAmount = 1f - (float)(gm.currentQuestIndex + 1) / (float)gm.quests.Count;
+                    inGuage.fillAmount = (float)gm.currentQuestIndex / (float)GlobalVariables.questsCount;
+                    nextOutGuage.fillAmount = 1f - (float)(gm.currentQuestIndex + 1) / (float)GlobalVariables.questsCount;
                 }
                 else
                 {

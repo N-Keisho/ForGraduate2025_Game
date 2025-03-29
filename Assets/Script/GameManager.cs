@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
         sound = GetComponent<Sound>();
         scentence.text = quests[currentQuestIndex].question;
         answerText.text = "";
+        GlobalVariables.questsCount = quests.Count;             // 問題数をグローバル変数に保存
+        GlobalVariables.correctAnswerCount = 0;                 // 正解数をグローバル変数に保存
     }
 
     void Update()
@@ -91,7 +93,7 @@ public class GameManager : MonoBehaviour
 
     public void NextQuest()
     {
-        if (currentQuestIndex < quests.Count - 1)
+        if (currentQuestIndex < GlobalVariables.questsCount - 1)
         {
             ResetAnser();
             currentQuestIndex++;
@@ -99,6 +101,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            GlobalVariables.correctAnswerCount = correctAnswerNum; // 正解数をグローバル変数に保存
             Debug.Log("Finish");
         }
     }

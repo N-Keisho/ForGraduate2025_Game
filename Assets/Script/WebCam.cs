@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class WebCam : MonoBehaviour
 {
     [SerializeField] RawImage centerCamera;
@@ -9,15 +10,19 @@ public class WebCam : MonoBehaviour
     private int width = 640;
     private int height = 480;
     private int fps = 30;
-    private WebCamTexture webcamTexture;
+    static private WebCamTexture webcamTexture;
 
     void Start()
     {
-        if (webcamTexture == null || !webcamTexture.isPlaying)
+        if (webcamTexture == null)
         {
             WebCamDevice[] devices = WebCamTexture.devices;
             webcamTexture = new WebCamTexture(devices[devicesIndex].name, this.width, this.height, this.fps);
             centerCamera.texture = webcamTexture;
+            webcamTexture.Play();
+        }
+        else{
+            centerCamera.texture = webcamTexture; // 既存のWebCamTextureを再利用
             webcamTexture.Play();
         }
     }
@@ -34,7 +39,7 @@ public class WebCam : MonoBehaviour
 
     void OnDestroy()
     {
-        if (webcamTexture != null)
+        if (webcamTexture != null && SceneManager.GetActiveScene().name == "Main")
         {
             webcamTexture.Stop(); // カメラ映像を停止
             webcamTexture = null; // カメラ映像を破棄
