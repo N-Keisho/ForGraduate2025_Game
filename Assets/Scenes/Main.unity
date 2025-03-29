@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: f94cae31e6cff664b9c2c3bd46e3d243, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.11296875, g: 0.12730491, b: 0.34653944, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &76621364
 RectTransform:
   m_ObjectHideFlags: 0
@@ -962,6 +962,7 @@ GameObject:
   - component: {fileID: 860736302}
   - component: {fileID: 860736303}
   - component: {fileID: 860736304}
+  - component: {fileID: 860736307}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1097,7 +1098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftTime: 0
-  timeLimit: 3
+  timeLimit: 6
   timer: 0
   period: 1
   inGuage: {fileID: 484206521}
@@ -1115,7 +1116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6cd77599df7af047819cb34b1883770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnswer: {fileID: 8300000, guid: c9a929b76c14b6642a7a72e8a4db5285, type: 3}
+  correctAnswer: {fileID: 8300000, guid: 50c9df5d5f4ee8b4898f62193a773877, type: 3}
   wrongAnswer: {fileID: 8300000, guid: fc1aee4995607a144b5060a3baaddc93, type: 3}
 --- !u!82 &860736305
 AudioSource:
@@ -1225,6 +1226,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a50fdbfad5fe54ea827d7c6a3a523c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &860736307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860736295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91cd71d9d3563c4ba89f4068ac30780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  cam: {fileID: 963194227}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
