@@ -29,9 +29,12 @@ public class LoadMain : MonoBehaviour
         {
             timer = 0.0f;
             value += 1 / maxValue;
-            outGuage.fillAmount = value; // ゲージの更新
-            if (value >= 1.0f)
+            if(value < 1.0f){
+                outGuage.fillAmount = value; // ゲージの更新
+            }
+            else if(value >= 1.2f)
             {
+                outGuage.fillAmount = 1.0f; // ゲージの更新
                 SceneManager.LoadScene("Main");
             }
         }

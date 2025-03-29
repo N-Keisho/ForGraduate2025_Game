@@ -224,7 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 11400000, guid: 3ad3e86dc386e60458fda4c93a2c3d62, type: 2}
   lodadDelay: 0
-  sceneName: LoadMain
+  sceneName: Explain
   start: {fileID: 8300000, guid: fe198b1a5131ad14da2e52ad46bd91f5, type: 3}
   logo: {fileID: 912518660}
 --- !u!114 &268021547
