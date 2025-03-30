@@ -6,6 +6,7 @@ public class GlobalVariables : MonoBehaviour
 {
     public static int  correctAnswerCount = 17; // 正解数
     public static int questsCount = 20; // 問題数
+    public static int cameraIndex = 1;
 
     // 本番で直すところ
     // GameManagerのquestsCount更新

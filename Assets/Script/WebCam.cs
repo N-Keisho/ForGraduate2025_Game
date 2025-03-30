@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class WebCam : MonoBehaviour
 {
     [SerializeField] RawImage centerCamera;
-    [SerializeField] int devicesIndex = 0;
+    int devicesIndex = 0;
     private int width = 640;
     private int height = 480;
     private int fps = 30;
@@ -14,6 +14,7 @@ public class WebCam : MonoBehaviour
 
     void Start()
     {
+        devicesIndex = GlobalVariables.cameraIndex;
         if (webcamTexture == null)
         {
             WebCamDevice[] devices = WebCamTexture.devices;

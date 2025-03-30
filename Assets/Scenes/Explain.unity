@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.11296875, g: 0.12730491, b: 0.34653944, a: 1}
+  m_IndirectSpecularColor: {r: 0.11292013, g: 0.12727538, b: 0.34643278, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -576,7 +576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6081971102452292170, guid: 1243e3106f5ce3e4490bb87d272da15f, type: 3}
       propertyPath: m_text
-      value: "\u3076\u3063\u3064\u3051\u672C\u5834 \u884C\u304F\u3088\uFF01"
+      value: "\u3076\u3063\u3064\u3051\u672C\u756A \u884C\u304F\u3088\uFF01"
       objectReference: {fileID: 0}
     - target: {fileID: 7446089424280574480, guid: 1243e3106f5ce3e4490bb87d272da15f, type: 3}
       propertyPath: m_Name
@@ -584,7 +584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7446089424280574480, guid: 1243e3106f5ce3e4490bb87d272da15f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8012414884199733607, guid: 1243e3106f5ce3e4490bb87d272da15f, type: 3}
       propertyPath: speed
@@ -1304,7 +1304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerCamera: {fileID: 1198237704}
-  devicesIndex: 0
+  devicesIndex: 1
 --- !u!82 &860736305
 AudioSource:
   m_ObjectHideFlags: 0
