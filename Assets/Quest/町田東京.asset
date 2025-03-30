@@ -18,5 +18,5 @@ MonoBehaviour:
   answer:
   - "\u3068\u3046\u304D\u3087\u3046"
   - "\u304B\u306A\u304C\u308F"
-  answerText: "\u3010\u7D76\u5BFE\u306B\u3011\\n\u6771\u4EAC"
+  answerText: "\u6771\u4EAC\\n\u3010\u7570\u8AD6\u306A\u3057\u3011"
   correctIndex: 0

@@ -104,15 +104,12 @@ public class Result : MonoBehaviour
         audioSource.PlayDelayed(1.5f);
 
         if(GlobalVariables.correctAnswerCount >= (float)GlobalVariables.questsCount / 4 * 3){
-            Debug.Log("high");
             audioSource.PlayOneShot(high);
         }
         else if(GlobalVariables.correctAnswerCount >= (float)GlobalVariables.questsCount / 2){
-            Debug.Log("mid");
             audioSource.PlayOneShot(mid);
         }
         else{
-            Debug.Log("low");
             audioSource.PlayOneShot(low);
         }
     }

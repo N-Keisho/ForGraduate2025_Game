@@ -47,7 +47,7 @@ public class Guage : MonoBehaviour
             outGuage.fillAmount = leftTime / maxTime;
             outGuage.color += addColor;
 
-            if(leftTime < 6.0f && !isDenger && !gm.isCorrect)
+            if(leftTime < 6.0f && !isDenger)
             {
                 isDenger = true;
                 sound.PlayDenger();

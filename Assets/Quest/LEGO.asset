@@ -18,5 +18,7 @@ MonoBehaviour:
   answer:
   - Leg Godt
   - "\u30EC\u30B0\u30B4\u30C3\u30C9"
-  answerText: "Leg Godt\\n(\u30C7\u30F3\u30DE\u30FC\u30AF)"
+  - "\u3088\u304F\u3042\u305D\u3079"
+  - play well
+  answerText: "Leg Godt\\n(\u3088\u304F\u3042\u305D\u3079)"
   correctIndex: 0
