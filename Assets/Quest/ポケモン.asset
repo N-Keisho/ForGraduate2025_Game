@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\u30DD\u30B1\u30E2\u30F3"
   m_EditorClassIdentifier: 
   type: 0
-  question: "2025\u5E743\u6708\u73FE\u5728\uFF0C\u30DD\u30B1\u30E2\u30F3\u306F\u5168\u90E8\u3067\u4F55\u5339\u3044\u308B\uFF1F"
+  question: "2025\u5E743\u6708\u73FE\u5728\u3001\u30DD\u30B1\u30E2\u30F3\u306F\u5168\u90E8\u3067\u4F55\u5339\u3044\u308B\uFF1F"
   image: {fileID: 0}
   answer:
   - 1025
