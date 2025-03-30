@@ -1020,6 +1020,7 @@ MonoBehaviour:
   timer: 0
   period: 0.05
   outGuage: {fileID: 408642042}
+  start: {fileID: 8300000, guid: 3cbcf8f41fbd49247a0706df34274361, type: 3}
   maxValue: 0
 --- !u!114 &860736308
 MonoBehaviour:

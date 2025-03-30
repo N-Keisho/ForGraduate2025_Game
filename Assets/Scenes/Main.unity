@@ -1202,8 +1202,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctAnswer: {fileID: 8300000, guid: 50c9df5d5f4ee8b4898f62193a773877, type: 3}
   wrongAnswer: {fileID: 8300000, guid: fc1aee4995607a144b5060a3baaddc93, type: 3}
-  denger: {fileID: 8300000, guid: d60cb25c6d7dc634aa0c363c9b5dd9c6, type: 3}
-  start: {fileID: 8300000, guid: fe198b1a5131ad14da2e52ad46bd91f5, type: 3}
+  denger: {fileID: 8300000, guid: f8381aa65bb0fff42815e40f0904393a, type: 3}
+  start: {fileID: 8300000, guid: 3cbcf8f41fbd49247a0706df34274361, type: 3}
   fin: {fileID: 8300000, guid: a852ebf1dec46ed4696fd6323ea5c3f2, type: 3}
 --- !u!82 &860736305
 AudioSource:

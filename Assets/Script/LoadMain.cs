@@ -11,10 +11,13 @@ public class LoadMain : MonoBehaviour
     [SerializeField] private float timer;               // タイマー
     [SerializeField] private float period = 1.0f;       // タイマーの周期
     [SerializeField] private Image outGuage;            // 外側のゲージ
+    [SerializeField] private AudioClip start;            // ゲーム開始音
     public float maxValue;                              // 最大時間（問題数×制限時間）
     private int questionCount = 19;                     // 問題数（19問くらいが丁度よさそう）
+    private AudioSource audioSource;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         maxValue =  questionCount * timeLimit;
         timer = 0.0f;
         value = 0.0f;
@@ -32,9 +35,10 @@ public class LoadMain : MonoBehaviour
             if(value < 1.0f){
                 outGuage.fillAmount = value; // ゲージの更新
             }
-            else if(value >= 1.2f)
+            else if(value >= 1.15f)
             {
                 outGuage.fillAmount = 1.0f; // ゲージの更新
+                audioSource.Stop();
                 SceneManager.LoadScene("Main");
             }
         }

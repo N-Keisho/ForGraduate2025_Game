@@ -31,6 +31,11 @@ public class Sound : MonoBehaviour
     public void PlayDenger()
     {
         audioSource.PlayOneShot(denger);
+        Invoke("Denger", 2f);
+        Invoke("Dmmnnenger", 4f);
+    }
+    void Denger(){
+        audioSource.PlayOneShot(denger);
     }
 
     public void PlayStart()
