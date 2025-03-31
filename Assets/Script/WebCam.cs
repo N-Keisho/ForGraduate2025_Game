@@ -10,11 +10,14 @@ public class WebCam : MonoBehaviour
     private int width = 640;
     private int height = 480;
     private int fps = 30;
+    [SerializeField] private GameObject cameraButton;
     static private WebCamTexture webcamTexture;
     static private bool isCameraAvailable = false;
 
     IEnumerator Start()
     {
+        if(cameraButton != null) cameraButton.SetActive(false);
+
         if (!isCameraAvailable)
         {
             yield return Application.RequestUserAuthorization(UserAuthorization.WebCam);
@@ -31,6 +34,7 @@ public class WebCam : MonoBehaviour
             if (webcamTexture == null)
             {
                 WebCamDevice[] devices = WebCamTexture.devices;
+                if(devices.Length > 1 && cameraButton != null) cameraButton.SetActive(true);
                 webcamTexture = new WebCamTexture(devices[devicesIndex].name, this.width, this.height, this.fps);
                 centerCamera.texture = webcamTexture;
                 webcamTexture.Play();
