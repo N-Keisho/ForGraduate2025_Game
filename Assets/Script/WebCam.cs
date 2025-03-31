@@ -55,7 +55,7 @@ public class WebCam : MonoBehaviour
             webcamTexture.Stop();
             webcamTexture.Play();
         }
-        if (Input.GetKeyDown(KeyCode.Return) && SceneManager.GetActiveScene().name == "Explain")
+        if (Input.GetKeyDown(KeyCode.C) && SceneManager.GetActiveScene().name == "Explain")
         {
             ChangeCamera(); // カメラを切り替える
         }
