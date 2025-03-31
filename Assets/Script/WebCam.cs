@@ -11,20 +11,35 @@ public class WebCam : MonoBehaviour
     private int height = 480;
     private int fps = 30;
     static private WebCamTexture webcamTexture;
+    static private bool isCameraAvailable = false;
 
-    void Start()
+    IEnumerator Start()
     {
-        devicesIndex = GlobalVariables.cameraIndex;
-        if (webcamTexture == null)
+        if (!isCameraAvailable)
         {
-            WebCamDevice[] devices = WebCamTexture.devices;
-            webcamTexture = new WebCamTexture(devices[devicesIndex].name, this.width, this.height, this.fps);
-            centerCamera.texture = webcamTexture;
-            webcamTexture.Play();
+            yield return Application.RequestUserAuthorization(UserAuthorization.WebCam);
+            if (Application.HasUserAuthorization(UserAuthorization.WebCam))
+            {
+                isCameraAvailable = true;
+            }
         }
-        else{
-            centerCamera.texture = webcamTexture; // 既存のWebCamTextureを再利用
-            webcamTexture.Play();
+
+
+        if (isCameraAvailable)
+        {
+            devicesIndex = GlobalVariables.cameraIndex;
+            if (webcamTexture == null)
+            {
+                WebCamDevice[] devices = WebCamTexture.devices;
+                webcamTexture = new WebCamTexture(devices[devicesIndex].name, this.width, this.height, this.fps);
+                centerCamera.texture = webcamTexture;
+                webcamTexture.Play();
+            }
+            else
+            {
+                centerCamera.texture = webcamTexture; // 既存のWebCamTextureを再利用
+                webcamTexture.Play();
+            }
         }
     }
 
@@ -35,6 +50,23 @@ public class WebCam : MonoBehaviour
             Debug.Log("カメラが切断されました。再接続を試みます...");
             webcamTexture.Stop();
             webcamTexture.Play();
+        }
+        if (Input.GetKeyDown(KeyCode.Return) && SceneManager.GetActiveScene().name == "Explain")
+        {
+            ChangeCamera(); // カメラを切り替える
+        }
+    }
+
+    void ChangeCamera()
+    {
+        if (webcamTexture != null && WebCamTexture.devices.Length > 1)
+        {
+            webcamTexture.Stop(); // カメラ映像を停止
+            devicesIndex = (devicesIndex + 1) % WebCamTexture.devices.Length; // 次のカメラに切り替え
+            GlobalVariables.cameraIndex = devicesIndex;
+            webcamTexture = new WebCamTexture(WebCamTexture.devices[devicesIndex].name, this.width, this.height, this.fps);
+            centerCamera.texture = webcamTexture;
+            webcamTexture.Play(); // 新しいカメラ映像を再生
         }
     }
 

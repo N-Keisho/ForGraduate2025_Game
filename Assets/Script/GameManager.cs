@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
         scentence.text = quests[currentQuestIndex].question;
         answerText.text = "";
         GlobalVariables.questsCount = quests.Count;             // 問題数をグローバル変数に保存
-        // GlobalVariables.questsCount = 3;
         GlobalVariables.correctAnswerCount = 0;                 // 正解数をグローバル変数に保存
         correctSymbol.SetActive(false);
         wrongSymbol.SetActive(false);
