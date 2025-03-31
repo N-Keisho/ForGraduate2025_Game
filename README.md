@@ -7,6 +7,8 @@ Web版：https://n-keisho.github.io/ForGraduate2025_Game/
 
 Windows版：https://github.com/N-Keisho/ForGraduate2025_Game/releases
 
+※Windows版は「Build.zip」のみダウンロード -> 解凍して「ForGraduate2025_Game.exe」を実行　で遊べます！
+
 ## 遊び方
 ![image](https://github.com/user-attachments/assets/2cf7ac90-21ea-4189-affb-4bb8437ada44)
 次々と出題される問題をどんどん回答していこう！
